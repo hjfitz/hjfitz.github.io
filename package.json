@@ -1,19 +1,18 @@
 {
-  "version": "3.0.0",
-  "name": "gatsby-v2-starter-lumen",
-  "description": "Simple starter for Gatsby",
-  "main": "n/a",
+  "version": "1.0.0",
+  "name": "me",
+  "description": "Personal blog - based on Lumen",
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
     "clean:public": "rm -rf public",
-    "clean": "npm run clean:public",
-    "lint": "./node_modules/.bin/eslint --cache --ext .js,.jsx --ignore-pattern public .",
+    "clean": "yarn clean:public",
+    "lint": "eslint --cache --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write './*.js' 'src/**/*.js' 'src/**/*.jsx'",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
-  "repository": "git+https://github.com/alxshelepenok/gatsby-starter-lumen.git",
+  "repository": "git@github.com:hjfitz/me.git",
   "keywords": [
     "gatsby",
     "blog",
@@ -21,11 +20,11 @@
     "theme",
     "starter"
   ],
-  "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
+  "author": "Harry Fitzgerald <harry.f@elanco.com>",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "gatsby": "^2.0.22",
+    "gatsby": "^2.15.17",
     "gatsby-plugin-catch-links": "^2.0.4",
     "gatsby-plugin-feed": "^2.0.8",
     "gatsby-plugin-google-analytics": "^2.0.6",
@@ -46,9 +45,9 @@
     "lodash": "^4.17.4",
     "node-sass": "^4.9.3",
     "prismjs": "^1.15.0",
-    "react": "^16.5.2",
-    "react-disqus-comments": "^1.2.0",
-    "react-dom": "^16.5.2",
+    "react": "^16.9.0",
+    "react-disqus-comments": "^1.4.0",
+    "react-dom": "^16.9.0",
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
