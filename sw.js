@@ -26,63 +26,57 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-4bb52e0a6c0955f6a8bb.js"
+    "url": "webpack-runtime-5e35ea81641515a9379a.js"
   },
   {
-    "url": "app-67b3d80d8482ec41d30a.js"
+    "url": "commons.ca8a5ee70911e5b73ba7.css"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-c5cb64bc0edabf3c9d7d.js"
+    "url": "commons-2e44566e50cf25ed4e5d.js"
+  },
+  {
+    "url": "app-19bd8076c305c5b5d2f5.js"
+  },
+  {
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-d39fddecc8f7eedb1009.js"
   },
   {
     "url": "index.html",
-    "revision": "19d706e48e1eae2b519bb9533690fa7d"
+    "revision": "e29bdb994d6fb35122afa71144a58e4e"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "6b5510dc94e98110c44358507982730d"
+    "revision": "76101e402902cca8afa48b8c48877009"
   },
   {
-    "url": "component---src-pages-index-jsx.69a945a11e23dfafac91.css"
+    "url": "styles.00cfeeb722d43064dc96.css"
   },
   {
-    "url": "2.5bb4825c1a314648bdfd.css"
+    "url": "component---src-pages-index-jsx-35698532bb4003d6648f.js"
   },
   {
-    "url": "0-64764efbc6095e6c5429.js"
+    "url": "styles-2dde18c4ff83c31542ba.js"
   },
   {
-    "url": "1-6266e78082fb9926acea.js"
+    "url": "page-data/index/page-data.json",
+    "revision": "9f88ae2c1debd9194399847889f0fb34"
   },
   {
-    "url": "3-849a9c84f0a5c4d29af0.js"
+    "url": "component---src-pages-404-jsx-1c7ece89de930eddd502.js"
   },
   {
-    "url": "2-9b676b6490de03eda918.js"
+    "url": "page-data/404.html/page-data.json",
+    "revision": "854bb5f7b838e204f022173baa50b1d9"
   },
   {
-    "url": "component---src-pages-index-jsx-862087722a1967e0849c.js"
-  },
-  {
-    "url": "static/d/713/path---index-6a9-Sqxse88z31PdKPuHLPIXJ03U.json",
-    "revision": "d610764357e9e3e3ac5fdf7af22d77ee"
-  },
-  {
-    "url": "component---src-pages-404-jsx-6aff9fbdc10e4850de68.js"
-  },
-  {
-    "url": "static/d/922/path---404-html-516-62a-zBokDzrdrUEq418uJ8El9PcHXg.json",
-    "revision": "a09e69b7f34a55b92d511befbee370be"
-  },
-  {
-    "url": "static/d/520/path---offline-plugin-app-shell-fallback-a-30-c5a-NZuapzHg3X9TaN1iIixfv1W23E.json",
-    "revision": "c2508676a2f33ea9f1f0bf472997f9a0"
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "8c4b7a58e6fc4a6a2a65319db22faa79"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/offline-plugin-app-shell-fallback/index.html", {
+workbox.routing.registerNavigationRoute("/me/offline-plugin-app-shell-fallback/index.html", {
   whitelist: [/^[^?]*([^.?]{5}|\.html)(\?.*)?$/],
   blacklist: [/\?(.+&)?no-cache=1$/],
 });
