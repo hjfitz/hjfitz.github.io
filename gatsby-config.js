@@ -4,7 +4,6 @@ const pxtorem = require('postcss-pxtorem')
 const url = 'https://www.hjf.io'
 
 module.exports = {
-	pathPrefix: '/me',
 	siteMetadata: {
 		url,
 		siteUrl: url,
