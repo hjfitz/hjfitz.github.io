@@ -10,7 +10,7 @@ function getScrollPerc() {
 	return `${scrolled}%`
 }
 
-function PostTemplateDetails(props) {
+function useScroll() {
 	const [scrollPerc, setScrollPerc] = useState('0%')
 	const setScroll = () => setScrollPerc(getScrollPerc())
 	useEffect(() => {
@@ -18,7 +18,11 @@ function PostTemplateDetails(props) {
 		window.addEventListener('scroll', setScroll)
 		return () => window.removeEventListener('scroll', setScroll)
 	})
+	return scrollPerc
+}
 
+function PostTemplateDetails(props) {
+	const scrollPerc = useScroll()
 	const post = props.data.markdownRemark
 	const tags = post.fields.tagSlugs
 

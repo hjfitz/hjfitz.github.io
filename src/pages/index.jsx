@@ -6,12 +6,9 @@ import Post from '../components/Post'
 import Sidebar from '../components/Sidebar'
 
 function IndexRoute(props) {
-	const items = []
 	const {title, subtitle} = props.data.site.siteMetadata
 	const posts = props.data.allMarkdownRemark.edges
-	posts.forEach((post) => {
-		items.push(<Post data={post} key={post.node.fields.slug} />)
-	})
+	const items = posts.map(post => (<Post data={post} key={post.node.fields.slug} />))
 
 	return (
 		<Layout>

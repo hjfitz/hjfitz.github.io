@@ -1,8 +1,7 @@
 module.exports = {
 	env: {
 		es6: true,
-		node: true,
-		mocha: true,
+    browser: true
 	},
 	globals: {
 		Atomics: 'readonly',
@@ -11,9 +10,6 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2018,
 		sourceType: 'module',
-  },
-  env: {
-    'browser': true
   },
   extends: ["prettier", "airbnb"],
   plugins: ["import", "jsx-a11y", "react"],
