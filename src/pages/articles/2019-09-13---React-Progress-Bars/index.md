@@ -67,3 +67,28 @@ And a bit of styling to boot -
 By updating state on each scroll, the component re-renders and `div.post-progress` gets wider (or thinner) based on the scroll, looking like a scrollbar. 
 
 The code examples are used ad verbatim in this blog - give them a go!
+
+
+---
+
+## <a name="hooks"></a>Update (20-Sep-2019): Migrated to Hooks
+
+Since migrating the site to [hooks](/migrating-to-hooks/), The code for this is **significantly** cleaner.
+
+The component is done with a functional component, with a custom `useScroll` hook. It looks like this:
+
+```js
+function useScroll() {
+	const [scrollPerc, setScrollPerc] = useState(getScrollPerc())
+	const setScroll = () => setScrollPerc(getScrollPerc())
+	useEffect(() => {
+		window.addEventListener('scroll', setScroll)
+		return () => window.removeEventListener('scroll', setScroll)
+	})
+	return scrollPerc
+}
+```
+
+The original `getScrollPerc()` from before is used. It's used by `setScroll`, a higher-order function. This means that an event listener can be added and removed.
+
+`useEffect` is used to set an event listener that updates the state and by returning `window.removeEventListener(......)`, the component can cleanup on unmount.

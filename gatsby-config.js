@@ -14,7 +14,7 @@ module.exports = {
 		disqusShortname: '',
 		menu: [
 			{
-				label: 'Articles',
+				label: 'Posts',
 				path: '/',
 			},
 			{
@@ -22,8 +22,8 @@ module.exports = {
 				path: '/about/',
 			},
 			{
-				label: 'Contact',
-				path: '/contact/',
+				label: 'Portfolio',
+				path: '/portfolio/',
 			},
 		],
 		author: {
