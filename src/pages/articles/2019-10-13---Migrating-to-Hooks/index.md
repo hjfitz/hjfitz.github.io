@@ -1,6 +1,6 @@
 ---
 title: "Migrating to Hooks"
-date: "2019-09-20T20:09:00.000Z"
+date: "2019-10-13T20:09:00.000Z"
 layout: post
 draft: false
 path: "/posts/migrating-to-hooks/"
@@ -9,7 +9,7 @@ tags:
   - "React"
   - "Web Development"
   - "Tips"
-description: "How I (and why) migrated this mighty Gatsby site from Stateful Components to Functional Components"
+description: "How I (and why) migrated this mighty Gatsby site from Stateful Components to Functional Components."
 ---
 
 A lot of Gatsby templates are outdated. They ship with old versions of React. In most cases, functional components can't be uesd. Older versions of React don't allow a Functional Component to be parent to a Stateful Component. This means ugly code! For example, a list of links might look like -

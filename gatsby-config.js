@@ -7,7 +7,7 @@ module.exports = {
 	siteMetadata: {
 		url,
 		siteUrl: url,
-		title: 'bloggo by hjf',
+		title: "Harry's Tech Blog",
 		subtitle: 'TypeScript open sourcerer with an adoration for performant and terse code',
 		copyright: '(copyleft) no rights reserved.',
 		disqusShortname: '',

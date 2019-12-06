@@ -6,7 +6,7 @@ path: "/about"
 
 I'm [hjf](https://www.linkedin.com/in/harry-fitzgerald/). This is a little blog that I run on GitHub pages with Gatsby. It's mostly a learning project - but mostly because I wanted another project.
 
-Currently, I'm a Cloud Engineer at Elanco looking at Azure automation, Identity and a bunch of other cool things while they split from Eli Lilly. Speaking of, I used to work for, Eli Lilly, as a Full Stack Div Slinger. Oddly enough, I'm still with the same team.
+Currently, I'm a Cloud Engineer at Elanco leading our Azue Security implementation, mentoring placement students and helping implement IAM while they split from Eli Lilly. Speaking of, I used to work for, Eli Lilly, as a Full Stack Div Slinger. Oddly enough, I'm still with the same team.
 
 I work with a lot ot TypeScript, JavaScript, Preact/React and I dabble in Go.
 
