@@ -9,5 +9,5 @@ tags:
   - "Productivity"
   - "Lifestyle"
   - "Tech"
-description: "How I work, how I dev, how I keep productive."
+description: '"That's all you need to function?" - The tools I use to function day-to-day.'
 ---
