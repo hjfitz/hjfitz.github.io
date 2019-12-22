@@ -8,7 +8,7 @@ category: "Life"
 tags:
   - "Productivity"
   - "Lifestyle"
-description: "I went offline, unplugged, ghosted. It was a bad experience and I'd recommend it for all!"
+description: "I went offline. Unplugged. Ghosted. It was a terrible experience and I'd totally do it again."
 ---
 
 ## Why I Quit
@@ -48,6 +48,8 @@ After the third week, it became easy to just read whatever I wanted on Hacker Ne
 My attention span was back and in full force and I noticed this elsewhere too. I spent less time multi-tasking, focusing on just cooking, or what was on the TV, or speaking with my other half. Food got better, entertainment got more entertaining and my relationship improved.
 
 ## Why I Came Back
+I was fucking bored. I didn't have a lot to do outside of my phone; over time it became my main medium for consumption. That's why I never paid for TV after moving out. There were loads of communities that I just disappeared from. I like watches, cars, code, cooking and a lot of that sat on reddit. My investment in to that phone really took a blow on my personal life. I even found that some days, I waited for the day to end. 
+
 I had an issue. I had mental clarity, but it was at the cost of being out of date. I had no fucking idea what was going on in the world. To me, that's not a huge issue. I was also falling out of date in modern web stuff. While Hacker News is a great place for intellectual discussion and interesting tech, they're not too up to date with their web tech and more often than not, web is frowned upon.
 
 Again, my reason for going offline was because I didn't want to fall behind in my career, but this was a greater cost to it. I was also a bored. I decided that I was coming back, but wanted to keep everything at a good balance. Pay attention where attention is due, but read when there's time.

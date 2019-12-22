@@ -8,7 +8,7 @@ module.exports = {
 		url,
 		siteUrl: url,
 		title: "Harry's Tech Blog",
-		subtitle: 'TypeScript open sourcerer with an adoration for performant and terse code',
+		subtitle: 'Personal development. Tech. Bugs.',
 		copyright: '(copyleft) no rights reserved.',
 		disqusShortname: '',
 		menu: [

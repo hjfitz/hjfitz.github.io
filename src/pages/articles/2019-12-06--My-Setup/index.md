@@ -9,5 +9,5 @@ tags:
   - "Productivity"
   - "Lifestyle"
   - "Tech"
-description: '"That's all you need to function?" - The tools I use to function day-to-day.'
+description: That's all you need to function? - The tools I use to function day-to-day.
 ---

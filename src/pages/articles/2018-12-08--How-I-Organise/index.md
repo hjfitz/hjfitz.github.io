@@ -9,5 +9,5 @@ tags:
   - "Productivity"
   - "Lifestyle"
   - "Tech"
-description: something around not putting work in to what makes you work
+description: "Time spent maintaining an organisational system often doesn't have a good ROI. I found one of those rare cases"
 ---

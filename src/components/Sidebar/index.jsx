@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import {Link} from 'gatsby'
 import Menu from '../Menu'
 import Links from '../Links'
@@ -7,29 +6,21 @@ import profilePic from '../../pages/photo.png'
 import './style.scss'
 
 function Sidebar(props) {
-	const {location} = props
 	const {
 		author,
 		subtitle,
 		copyright,
 		menu,
 	} = props.data.site.siteMetadata
-	const isHomePage = get(location, 'pathname', '/') === '/'
 
 	const authorBlock = (
 		<div>
 			<Link to="/">
 				<img src={profilePic} className="sidebar__author-photo" width="75" height="75" alt={author.name} />
 			</Link>
-			{isHomePage ? (
-				<h1 className="sidebar__author-title">
-					<Link className="sidebar__author-title-link" to="/">{author.name}</Link>
-				</h1>
-			) : (
-				<h2 className="sidebar__author-title">
-					<Link className="sidebar__author-title-link" to="/">{author.name}</Link>
-				</h2>
-			)}
+			<h1 className="sidebar__author-title">
+				<Link className="sidebar__author-title-link" to="/">{author.name}</Link>
+			</h1>
 			<p className="sidebar__author-subtitle">{subtitle}</p>
 		</div>
 	)
