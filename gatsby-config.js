@@ -31,7 +31,7 @@ module.exports = {
 			github: '@hjfitz',
 			telegram: '#',
 			twitter: '#',
-			rss: '#',
+			rss: '/rss.xml',
 			vk: '#',
 		},
 	},

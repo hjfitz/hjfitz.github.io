@@ -19,6 +19,15 @@ const Links = props => (
 					<i className="icon-mail" />
 				</a>
 			</li>
+			<li className="links__list-item">
+				<a
+					href={props.data.rss}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<i className="icon-rss" />
+				</a>
+			</li>
 		</ul>
 	</div>
 )
