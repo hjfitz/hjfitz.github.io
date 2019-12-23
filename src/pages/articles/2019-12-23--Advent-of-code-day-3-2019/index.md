@@ -1,6 +1,6 @@
 ---
 title: "Basic Memory Management in Node: Advent of Code Day 3"
-date: "2019-12-20T20:20:00.000Z"
+date: "2019-12-23T21:31:00.000Z"
 layout: post
 draft: false
 path: "/posts/advent-of-code-day-3/"
