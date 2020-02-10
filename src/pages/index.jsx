@@ -5,6 +5,18 @@ import Layout from '../components/Layout'
 import Post from '../components/Post'
 import Sidebar from '../components/Sidebar'
 
+// hotfix to remove service workers
+(() => {
+	if (typeof navigator === 'object' && navigator && 'serviceWorker' in navigator) {
+		navigator.serviceWorker.getRegistrations().then((regs) => {
+			for (const reg of regs) {
+				console.info('Removing service worker')
+				reg.unregister()
+			}
+		})
+	}
+})()
+
 function IndexRoute(props) {
 	const {title, subtitle} = props.data.site.siteMetadata
 	const posts = props.data.allMarkdownRemark.edges
