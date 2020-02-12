@@ -21,8 +21,8 @@ module.exports = {
 				path: '/about/',
 			},
 			{
-				label: 'Portfolio',
-				path: '/portfolio/',
+				label: 'Uses',
+				path: '/uses/',
 			},
 		],
 		author: {
