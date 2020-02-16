@@ -1,4 +1,192 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Harry's Tech Blog]]></title><description><![CDATA[Personal development. Tech. Bugs.]]></description><link>http://github.com/dylang/node-rss</link><generator>RSS for Node</generator><lastBuildDate>Sun, 16 Feb 2020 15:34:21 GMT</lastBuildDate><item><title><![CDATA[Basic Memory Management in Node: Advent of Code Day 3]]></title><description><![CDATA[I wrote a node program that took >100GB of memory. It didn't even use Electron.]]></description><link>https://www.hjf.io/posts/advent-of-code-day-3/</link><guid isPermaLink="false">https://www.hjf.io/posts/advent-of-code-day-3/</guid><pubDate>Mon, 23 Dec 2019 21:31:00 GMT</pubDate><content:encoded>&lt;p&gt;I’m busy, but in my spare time when I’m not engineering at work, I’m engineering at home. Recently, I’ve hit a dry streak with stuff to do. I’ve already written &lt;a href=&quot;https://github.com/hjfitz/relay.ts&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://github.com/hjfitz/yanc-webserver&quot;&gt;2&lt;/a&gt; clones of Express and I can’t take it anymore. That’s why I’m thankful for &lt;a href=&quot;https://adventofcode.com/&quot;&gt;Avent of Code&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Harry's Tech Blog]]></title><description><![CDATA[Personal development. Tech. Bugs.]]></description><link>http://github.com/dylang/node-rss</link><generator>RSS for Node</generator><lastBuildDate>Sun, 16 Feb 2020 16:41:54 GMT</lastBuildDate><item><title><![CDATA[Listen to Page Renders!]]></title><description><![CDATA[Let's build a web extension that can visualise how pages render with audio]]></description><link>https://www.hjf.io/posts/listen-to-page-renders/</link><guid isPermaLink="false">https://www.hjf.io/posts/listen-to-page-renders/</guid><pubDate>Sun, 16 Feb 2020 15:43:00 GMT</pubDate><content:encoded>&lt;p&gt;I saw an awesome &lt;a href=&quot;https://gist.github.com/tomhicks/6cb5e827723c4eaef638bf9f7686d2d8&quot;&gt;Gist&lt;/a&gt; called &lt;code class=&quot;language-text&quot;&gt;plink-plonk.js&lt;/code&gt; the other day. It shows you how you can, for single page apps, listen to how a page changes and re-renders.&lt;/p&gt;
+&lt;p&gt;The code’s pretty simple too:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; audioCtx &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;AudioContext &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;webkitAudioContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; observer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MutationObserver&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mutationsList&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; oscillator &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; audioCtx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createOscillator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  oscillator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;audioCtx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;destination&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  oscillator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;sine&quot;&lt;/span&gt;
+  oscillator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;frequency&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setValueAtTime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mutationsList&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;880&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    audioCtx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;currentTime&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  oscillator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  oscillator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;audioCtx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;currentTime &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+observer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  attributes&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  childList&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  subtree&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  characterData&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create an audio context and observer, and observe the document. For each change, oscillate.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/owl-47080c0c86f75bb46ff24b8b6708c56c-4e7e8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 530px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 85.47169811320755%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsSAAALEgHS3X78AAACFElEQVQ4y51TyY7iQAzN//MBHIEDB0BCwFxAgISEEAcObBKLGHYlLAkhoVIhqZCkX5eBaUZzGqtlql1+fq9sR4nj+HK5mKYJf9b16/VqGIbneYhHURSGIbymaY/HA5EgCChCpiBkWZbDGP5s23YcB14IgTgAyEChQqGwWq2Ox2O/36eKVEKR9UQQPC6W7bheIBmiCC6+S9vv99lsNp/Pp1KpwWBARZ9gmRYblm1zjhAeQAopCX48Htfr9Uwmk0gkRqPRJ1iyaLqhXy1fiK2qctelB8N83/8lrVwup9PpYrGIZyNOL1IoD0jdtCzm7FUNv4TEFWOs3W7vdrvFYlEqlZLJ5HK5pM49wZ4IHNleqIHn7p1xTso559PpFK3abrez2SyXyzWbzQ+wLwLL+c6OXmqZ4xDz7XYD5++XNRoNvP8DDJB5Y88+E6F7D0kF5+v1WlVVjPpwOKBhk8nkPUWF5IHcZpzY4O++H0YhNsd1XQgGJ8C6rs/n87/fTIbme0K43h2aaUjgxFa0Wi3gv/fvfN5sNlhBIoB/g6NXiZAuKAOysa0YNaZVq9XQreFwCCGoBQLlnffT04GWgfa32+12Op1er4czWggtWOE/sv9ptMm0qtVqtVKp/OSQo/J9fA+4dqVhMcCJlrCXYWDQD7X4PPAvzkh+gnGHMaAfujQMBuVwjd04nU6I4ABPXy7NDIePbv+HfQFxirz9v9MgbQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Daw the rest of the fucking owl...&quot;
+        title=&quot;&quot;
+        src=&quot;/static/owl-47080c0c86f75bb46ff24b8b6708c56c-4e7e8.png&quot;
+        srcset=&quot;/static/owl-47080c0c86f75bb46ff24b8b6708c56c-2fecf.png 240w,
+/static/owl-47080c0c86f75bb46ff24b8b6708c56c-cb8e2.png 480w,
+/static/owl-47080c0c86f75bb46ff24b8b6708c56c-4e7e8.png 530w&quot;
+        sizes=&quot;(max-width: 530px) 100vw, 530px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+I thought that this is pretty interesting, but all around useless outside of your own site. If you want to listen to other sites, you need them to implement this.&lt;/p&gt;
+&lt;p&gt;It got me thinking, how do we execute our own JavaScript on other websites? Web Extensions.&lt;/p&gt;
+&lt;h1&gt;Web Extensions API&lt;/h1&gt;
+&lt;p&gt;The &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions&quot;&gt;Web Extensions API&lt;/a&gt; allows us to write custom JavaScript to run on any site, to enhance the experience.&lt;/p&gt;
+&lt;p&gt;Now that this is a standard API for browsers, it’s easy enough to write a basic extension. Let’s start with folder structure:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;- dist/
+  - manifest.json
+  - extension.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;dist:&lt;/strong&gt; Where our final extension lies&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;manifest.json:&lt;/strong&gt; Metadata about our web extension&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;extension.js:&lt;/strong&gt; The core code for our extension. If we wanted, we could split this out in to different files in a &lt;code class=&quot;language-text&quot;&gt;src/&lt;/code&gt; directory and use webpack to bundle it. I’ve done this &lt;a href=&quot;https://github.com/hjfitz/WEBRES-1&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;As an aside, this is a pretty cool extension&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Extension Manifest&lt;/h2&gt;
+&lt;p&gt;Let’s talk about the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json&quot;&gt;manifest&lt;/a&gt;. This defines how our application works.&lt;/p&gt;
+&lt;p&gt;For our purposes, we just want to inject the aforementioned &lt;code class=&quot;language-text&quot;&gt;plink-plonk.js&lt;/code&gt; to any page. Let’s look at our manifest.json:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Listen to Browser Renders&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Listen to a SPA render&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;permissions&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;activeTab&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;content_scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;token property&quot;&gt;&quot;matches&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&amp;lt;all_urls&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token property&quot;&gt;&quot;run_at&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;document_end&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token property&quot;&gt;&quot;js&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;ext.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;manifest_version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There’s a lot of stuff here that speaks for itself. We’re interested in demistifying &lt;code class=&quot;language-text&quot;&gt;permissions&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;content_scripts&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;manifest_version&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;permissions:&lt;/strong&gt; Which &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions&quot;&gt;permissions&lt;/a&gt; does the extension want to ask for. Here, we just want to use the active tab. You can ask for a lot more too. There are some interesting permissions, so check these over when you install a new extension… A few of note are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;downloads&lt;/li&gt;
+&lt;li&gt;browsingData&lt;/li&gt;
+&lt;li&gt;topSites&lt;/li&gt;
+&lt;li&gt;cookies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;content_scripts:&lt;/strong&gt; These are scripts that run on the &lt;code class=&quot;language-text&quot;&gt;matches&lt;/code&gt; key.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;matches:&lt;/strong&gt; Which URL to run on. We want all, so &lt;code class=&quot;language-text&quot;&gt;&amp;lt;all_urls&amp;gt;&lt;/code&gt; hits this.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;run_at:&lt;/strong&gt; When to run the script. I’ve gone for &lt;code class=&quot;language-text&quot;&gt;document_end&lt;/code&gt;. This is the same as wrapping your code in &lt;code class=&quot;language-text&quot;&gt;$(document).ready()&lt;/code&gt; or just firing it when &lt;code class=&quot;language-text&quot;&gt;DOMContentLoaded&lt;/code&gt; is fired.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;js:&lt;/strong&gt; Which JavaScript file to execute.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;manifest_version:&lt;/strong&gt; The version of the Web Extension manifest to follow. Not sure why we don’t us the standard &lt;code class=&quot;language-text&quot;&gt;$schema&lt;/code&gt; key here.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;The Code&lt;/h1&gt;
+&lt;p&gt;Honestly, there’s not a lot to say here. I just took &lt;code class=&quot;language-text&quot;&gt;plink-plonk.js&lt;/code&gt; and shoved it in to &lt;code class=&quot;language-text&quot;&gt;ext.js&lt;/code&gt; that I refer to in the manifest file.&lt;/p&gt;
+&lt;h1&gt;Loading the Extension&lt;/h1&gt;
+&lt;p&gt;To install this manually, go to extensions and you should get the option to load it.&lt;/p&gt;
+&lt;p&gt;In Chrome: hit &lt;code class=&quot;language-text&quot;&gt;load unpacked extension&lt;/code&gt; at the top left, navigate to the folder that your extension sits in and load it.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/chrome-load-61621aa8f03813b8ff9ee3d7360c7c48-41e23.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 572px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 61.01398601398601%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAAB7ElEQVQoz4VSTW/TQBD1TyHqFSEuKeUHABLKoQdu0MKhcKYHflklDigcqgqJO5d+0DROm8RNYq8dx+v99GPGriNKJTLS07zdnXk7szvB7tYPfHh6if0nZ+TPsff4HG86p5vx6Ay9Th+vO0fobX1dI3jf/YnPL0IcvrrEl94VDl8OcLB9gY/PLvBppwFz3mvXzA+6v/Gue4y329+wt/Od0Mf+8z6CcDBGLiqMhxo3A43bGwNVOsSRRXRtMB0ZiIWFpj0+m00Mcd9AooZqUQDBZDJGVQGr3KBYWRKzqOCglK3X9Z628BXx3EIWzB3leIp7iOBqOILznpI0tDG1L5WGtRbOWRhrYJ0j7+ApznlHZ45iqWrN8Q2Yc14QhteU4CHLRojBwlIapFSd8xXm8zkWixjTaVTzKLpFUcj6AraKWyQzVEQwHDaCLKTubjFUZa6B6OQYdjaBWOZI0xRJIhDHMQopa5FWaKOgIrD5dAFfStxl3Uv+2zYLkl/fzsLUWouKvXP39+pqSdD8R7A1R8l5vqSWEwghkKQZEpES5ydIqBu1jrWOBcOHgvwppfRYiuZ2uSKeuvqDXFHA0pu2jbOolIrmk+LkPxU2aEYnzzTiGX0QiWdCI5nreh5VlqGMk/UYheGIRJc4/VUiyxT+AEdiaDEUGQeWAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Load the extension in Chrome&quot;
+        title=&quot;&quot;
+        src=&quot;/static/chrome-load-61621aa8f03813b8ff9ee3d7360c7c48-41e23.png&quot;
+        srcset=&quot;/static/chrome-load-61621aa8f03813b8ff9ee3d7360c7c48-c2b80.png 240w,
+/static/chrome-load-61621aa8f03813b8ff9ee3d7360c7c48-bf6fa.png 480w,
+/static/chrome-load-61621aa8f03813b8ff9ee3d7360c7c48-41e23.png 572w&quot;
+        sizes=&quot;(max-width: 572px) 100vw, 572px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In Firefox: Go to &lt;code class=&quot;language-text&quot;&gt;about:debugging&lt;/code&gt; and hit &lt;code class=&quot;language-text&quot;&gt;Load temporary extension&lt;/code&gt;. Navigate to your manifest file and load that.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-6fa01.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 960px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 42.46987951807229%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABZUlEQVQoz5WRzU7CQBSF+y6AiibgRhf+s/AN3fse+IORBUiJJq5sYpOiKQozhem0nba09Dgz2ASjGyf5cubOvXPvmdY4a53j+KSFw6NT7O0fYKu+g3p9G83mrqbRKLWJWm0TlUrtm+qarqhWN2C021fodrvodO5wc3Ortd9/gDl8wvDxGaY51AwGpj4v6fVW/Dzrw+A8RFEU+LUyAaQT/HcZI+cNL5YNyiKEUQwRCiQyMb++x+flBXgcwqMzzOcMnjcDlXvGfAgR/4kxdj9APQ4mckQiRZKkSBcZ5pMZJvZY5jwQQjVRJJCmi1WNVMVC1irK2JhOCTj3wX0fcZzoYgWTMeNcN6LU0ygHZUOFqnddF6PRu9SxfoFsSHXS9wMJRxhGyLJcDuGwX23pKtJ79UzlcLkskOe5ZKk1SRIEQQDLsqDMGYR42rK6oFhv6DiOjEM9iDEmHcX6w6ufWKKWGkII0cO/ADPRLxbFqRE9AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Load the extension in Firefox&quot;
+        title=&quot;&quot;
+        src=&quot;/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-c83f1.png&quot;
+        srcset=&quot;/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-569e3.png 240w,
+/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-93400.png 480w,
+/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-c83f1.png 960w,
+/static/firefox-load-5edd2a9e1b3d2ce1e04b8d72440e2ad7-6fa01.png 996w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Remarks&lt;/h1&gt;
+&lt;p&gt;This is a pretty cool thing to listen to how a page changes. The more noise really does equate to how noisy your page is on load. The less noise might mean a better user experience (on load) as there’s less jumping about.&lt;/p&gt;
+&lt;p&gt;The Observer API doesn’t seem to work too well on Firefox though, there’s less audio generated.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Advent of Code Day 3: How Not to Manage Memory]]></title><description><![CDATA[I wrote a node program that took >100GB of memory. It didn't even use Electron.]]></description><link>https://www.hjf.io/posts/advent-of-code-day-3/</link><guid isPermaLink="false">https://www.hjf.io/posts/advent-of-code-day-3/</guid><pubDate>Mon, 23 Dec 2019 21:31:00 GMT</pubDate><content:encoded>&lt;p&gt;I’m busy, but in my spare time when I’m not engineering at work, I’m engineering at home. Recently, I’ve hit a dry streak with stuff to do. I’ve already written &lt;a href=&quot;https://github.com/hjfitz/relay.ts&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://github.com/hjfitz/yanc-webserver&quot;&gt;2&lt;/a&gt; clones of Express and I can’t take it anymore. That’s why I’m thankful for &lt;a href=&quot;https://adventofcode.com/&quot;&gt;Avent of Code&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Whenever there’s been some downtime, I’ve tackled it. &lt;a href=&quot;https://adventofcode.com/2019/day/3&quot;&gt;Day 3&lt;/a&gt; was difficult and actually a nice challenge, so I thought I’d take you, the reader, along for the ride. It took a few attempts to actually solve. I went in without proper planning and at it’s height, my solution consumed &lt;strong&gt;112GB&lt;/strong&gt; of memory.&lt;/p&gt;
 &lt;p&gt;This is a journey of learning how to better utilise memory in a Node.js program. I could have opted for something like Go, but honestly I’ve never attempted something like Day 3 and overall feel more comfortable in Node. There’s also some nice features that I use here.&lt;/p&gt;
 &lt;h1&gt;The Problem&lt;/h1&gt;
