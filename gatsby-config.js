@@ -118,14 +118,13 @@ module.exports = {
 				],
 			},
 		},
-		'gatsby-transformer-sharp',
-		'gatsby-plugin-sharp',
 		{
 			resolve: 'gatsby-plugin-google-fonts',
 			options: {
 				fonts: ['roboto:400,400i,500,700'],
 			},
 		},
+		'gatsby-plugin-sharp',
 		'gatsby-plugin-sitemap',
 		// 'gatsby-plugin-offline',
 		'gatsby-plugin-catch-links',
